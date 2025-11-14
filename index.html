@@ -391,9 +391,12 @@
     </div>
   </div>
   <script>
-fetch("/api/log");
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}
 </script>
-
 </body>
 </html>
+
 
