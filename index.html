@@ -393,10 +393,24 @@
   <script>
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js");
+  navigator.serviceWorker.register("/sw.js")
+    .then(() => console.log("SW registered"))
+    .catch(err => console.log("SW error:", err));
 }
+
+// Log și accesarea normală a paginii
+fetch("/api/log", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    url: location.href,
+    method: "GET",
+    type: "page_visit"
+  })
+});
 </script>
 </body>
 </html>
+
 
 
